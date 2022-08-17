@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>654.666666666667,712</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,712</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -49,7 +49,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -79,14 +79,11 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap:VirtualizedContainerService.HintSize="664.666666666667,647.333333333333" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_excelData" />
-      <Variable x:TypeArguments="x:Int32" Name="int_filesNO" />
-      <Variable x:TypeArguments="x:String" Name="str_archiveFolderPath" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -99,9 +96,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID11</x:Reference>
+      <x:Reference>__ReferenceID12</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID11">
+    <FlowStep x:Name="__ReferenceID12">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,127.166666666667</av:Point>
@@ -160,7 +157,7 @@
         </ui:FilterDataTable>
       </Sequence>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID10">
+        <FlowStep x:Name="__ReferenceID11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,308.5</av:Point>
@@ -174,6 +171,12 @@
                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                 </ActivityAction.Argument>
                 <Sequence DisplayName="Handle Row" sap:VirtualizedContainerService.HintSize="242,144.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="dt_excelData" />
+                    <Variable x:TypeArguments="x:Int32" Name="int_filesNO" />
+                    <Variable x:TypeArguments="x:String" Name="str_archiveFolderPath" />
+                    <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="IEnu_currentExtensionFiles" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -191,9 +194,9 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <Flowchart.StartNode>
-                      <x:Reference>__ReferenceID9</x:Reference>
+                      <x:Reference>__ReferenceID10</x:Reference>
                     </Flowchart.StartNode>
-                    <FlowDecision x:Name="__ReferenceID9" sap2010:Annotation.AnnotationText="checks if directory path valid and incase archive needed - checks also the archive path and both folders are not project folders" Condition="[Directory.Exists(CurrentRow(&quot;Directory&quot;).ToString) AndAlso ( CurrentRow(&quot;Is Save To Archive?&quot;).ToString.Equals(&quot;False&quot;) Or Directory.Exists(CurrentRow(&quot;Archive Directory&quot;).ToString)) AndAlso&#xA;Not (System.Text.RegularExpressions.Regex.Match(CurrentRow(0).ToString,&quot;\\+[^\\]*}*(?!.*\\)&quot;).ToString.IndexOf(&quot;.&quot;)=1) AndAlso&#xA;Not (System.Text.RegularExpressions.Regex.Match(CurrentRow(1).ToString,&quot;\\+[^\\]*}*(?!.*\\)&quot;).ToString.IndexOf(&quot;.&quot;)=1)]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="78.6666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                    <FlowDecision x:Name="__ReferenceID10" sap2010:Annotation.AnnotationText="checks if directory path valid and incase archive needed - checks also the archive path and both folders are not project folders" Condition="[Directory.Exists(CurrentRow(&quot;Directory&quot;).ToString) AndAlso ( CurrentRow(&quot;Is Save To Archive?&quot;).ToString.Equals(&quot;False&quot;) Or Directory.Exists(CurrentRow(&quot;Archive Directory&quot;).ToString)) AndAlso&#xA;Not (System.Text.RegularExpressions.Regex.Match(CurrentRow(0).ToString,&quot;\\+[^\\]*}*(?!.*\\)&quot;).ToString.IndexOf(&quot;.&quot;)=1) AndAlso&#xA;Not (System.Text.RegularExpressions.Regex.Match(CurrentRow(1).ToString,&quot;\\+[^\\]*}*(?!.*\\)&quot;).ToString.IndexOf(&quot;.&quot;)=1)]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="78.6666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">690.666666666667,86.6666666666667</av:Point>
@@ -280,12 +283,12 @@
                                               <av:PointCollection x:Key="ConnectorLocation">130,668 130,716</av:PointCollection>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <ParallelForEach x:TypeArguments="x:String" DisplayName="for each given extension " sap:VirtualizedContainerService.HintSize="354.666666666667,720" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_2" Values="[CurrentRow(&quot;Files Extensions&quot;).ToString.Split({&quot;,&quot;},StringSplitOptions.RemoveEmptyEntries).Select(function(x) x.Trim)]">
+                                          <ParallelForEach x:TypeArguments="x:String" DisplayName="for each given extension " sap:VirtualizedContainerService.HintSize="529.333333333333,983.333333333333" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_2" Values="[CurrentRow(&quot;Files Extensions&quot;).ToString.Split({&quot;,&quot;},StringSplitOptions.RemoveEmptyEntries).Select(function(x) x.Trim)]">
                                             <ActivityAction x:TypeArguments="x:String">
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="x:String" Name="extension" />
                                               </ActivityAction.Argument>
-                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,567.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="478.666666666667,830.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_79">
                                                 <Sequence.Variables>
                                                   <Variable x:TypeArguments="x:String" Default="0" Name="str_xDays" />
                                                   <Variable x:TypeArguments="x:Int32" Default="5" Name="int_xDays" />
@@ -297,8 +300,8 @@
                                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_36" Text="[&quot;extension=&quot;+extension.ToString]" />
-                                                <Assign sap2010:Annotation.AnnotationText="get files using query filtering the result according to the&#xD;&#xA;Delete Files Older Than X Days' AND&#xD;&#xA;Folder Max Files Capacity' columns&#xD;&#xA;AND&#xD;&#xA;get only files with permitted extensions " DisplayName="get the files with/without sub folders" sap:VirtualizedContainerService.HintSize="262,177.333333333333" sap2010:WorkflowViewState.IdRef="Assign_38">
+                                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_36" Text="[&quot;extension=&quot;+extension.ToString]" />
+                                                <Assign sap2010:Annotation.AnnotationText="get files using query filtering the result according to the&#xA;Delete Files Older Than X Days' AND&#xA;Folder Max Files Capacity' columns&#xA;AND&#xA;get only files with permitted extensions " DisplayName="get the files with/without sub folders" sap:VirtualizedContainerService.HintSize="436.666666666667,177.333333333333" sap2010:WorkflowViewState.IdRef="Assign_38">
                                                   <Assign.To>
                                                     <OutArgument x:TypeArguments="scg:IEnumerable(x:String)">[IEnu_currentExtensionFiles]</OutArgument>
                                                   </Assign.To>
@@ -317,82 +320,166 @@ Function (x)  Not x.Extension.Equals(".xaml") AndAlso
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </Assign>
-                                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_45" Text="[&quot;count=&quot;+IEnu_currentExtensionFiles.Count.ToString]" />
-                                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each file with the given extension" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_13" Values="[IEnu_currentExtensionFiles]">
-                                                  <ui:ForEach.Body>
-                                                    <ActivityAction x:TypeArguments="x:String">
-                                                      <ActivityAction.Argument>
-                                                        <DelegateInArgument x:TypeArguments="x:String" Name="file" />
-                                                      </ActivityAction.Argument>
-                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="568,1297.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_78">
-                                                        <sap:WorkflowViewStateService.ViewState>
-                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                          </scg:Dictionary>
-                                                        </sap:WorkflowViewStateService.ViewState>
-                                                        <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="526,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_38" Text="[&quot;file= &quot;+file.ToString]" />
-                                                        <Sequence sap:VirtualizedContainerService.HintSize="526,1102.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_96">
-                                                          <Sequence.Variables>
-                                                            <Variable x:TypeArguments="s:String[]" Name="strArr_FilePaths" />
-                                                            <Variable x:TypeArguments="x:String" Name="str_currentFileDestPath" />
-                                                            <Variable x:TypeArguments="x:String" Name="e" />
-                                                          </Sequence.Variables>
-                                                          <sap:WorkflowViewStateService.ViewState>
-                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                            </scg:Dictionary>
-                                                          </sap:WorkflowViewStateService.ViewState>
-                                                          <Assign DisplayName="get archive sub folder file path" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_39">
-                                                            <Assign.To>
-                                                              <OutArgument x:TypeArguments="x:String">[str_currentFileDestPath]</OutArgument>
-                                                            </Assign.To>
-                                                            <Assign.Value>
-                                                              <InArgument x:TypeArguments="x:String">[str_archiveFolderPath+file.ToString.Replace(currentRow("Directory").ToString,"")]</InArgument>
-                                                            </Assign.Value>
-                                                          </Assign>
-                                                          <Assign DisplayName="ignore the file name " sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_40">
-                                                            <Assign.To>
-                                                              <OutArgument x:TypeArguments="x:String">[str_currentFileDestPath]</OutArgument>
-                                                            </Assign.To>
-                                                            <Assign.Value>
-                                                              <InArgument x:TypeArguments="x:String">[str_currentFileDestPath.Replace(System.Text.RegularExpressions.Regex.Match(str_currentFileDestPath,"\\+[^\\]*}*(?!.*\\)").ToString,"")]</InArgument>
-                                                            </Assign.Value>
-                                                          </Assign>
-                                                          <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_44" Text="[&quot;str_currentFilePath=&quot;+str_currentFileDestPath]" />
-                                                          <If Condition="[not Directory.Exists(str_currentFileDestPath)]" DisplayName="creates the sub folder in the archive folder if not exists" sap:VirtualizedContainerService.HintSize="484,367.333333333333" sap2010:WorkflowViewState.IdRef="If_31">
-                                                            <If.Then>
-                                                              <Sequence sap:VirtualizedContainerService.HintSize="376,172.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_93">
-                                                                <sap:WorkflowViewStateService.ViewState>
-                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                  </scg:Dictionary>
-                                                                </sap:WorkflowViewStateService.ViewState>
-                                                                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[str_currentFileDestPath]" />
-                                                              </Sequence>
-                                                            </If.Then>
-                                                            <If.Else>
-                                                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_94">
-                                                                <sap:WorkflowViewStateService.ViewState>
-                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                  </scg:Dictionary>
-                                                                </sap:WorkflowViewStateService.ViewState>
-                                                              </Sequence>
-                                                            </If.Else>
-                                                          </If>
-                                                          <ui:MoveFile ContinueOnError="{x:Null}" Destination="[str_currentFileDestPath]" DisplayName="move file to archive" sap:VirtualizedContainerService.HintSize="484,162" sap2010:WorkflowViewState.IdRef="MoveFile_5" Overwrite="True" Path="[file.ToString]" />
-                                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Trace" Message="[file.ToString+&quot;  MOVED TO ARCHIVE&quot;]" />
-                                                        </Sequence>
-                                                      </Sequence>
-                                                    </ActivityAction>
-                                                  </ui:ForEach.Body>
+                                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_45" Text="[&quot;count=&quot;+IEnu_currentExtensionFiles.Count.ToString]" />
+                                                <ParallelForEach x:TypeArguments="x:String" DisplayName="Parallel For each file with the given extension" sap:VirtualizedContainerService.HintSize="436.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_9" Values="[IEnu_currentExtensionFiles]">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
-                                                </ui:ForEach>
+                                                  <ActivityAction x:TypeArguments="x:String">
+                                                    <ActivityAction.Argument>
+                                                      <DelegateInArgument x:TypeArguments="x:String" Name="file" />
+                                                    </ActivityAction.Argument>
+                                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="568,1297.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_110">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="526,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_51" Text="[&quot;file= &quot;+file.ToString]" />
+                                                      <Sequence sap:VirtualizedContainerService.HintSize="526,1102.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_109">
+                                                        <Sequence.Variables>
+                                                          <Variable x:TypeArguments="s:String[]" Name="strArr_FilePaths" />
+                                                          <Variable x:TypeArguments="x:String" Name="str_currentFileDestPath" />
+                                                          <Variable x:TypeArguments="x:String" Name="e" />
+                                                        </Sequence.Variables>
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <Assign DisplayName="get archive sub folder file path" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_43">
+                                                          <Assign.To>
+                                                            <OutArgument x:TypeArguments="x:String">[str_currentFileDestPath]</OutArgument>
+                                                          </Assign.To>
+                                                          <Assign.Value>
+                                                            <InArgument x:TypeArguments="x:String">[str_archiveFolderPath+file.ToString.Replace(currentRow("Directory").ToString,"")]</InArgument>
+                                                          </Assign.Value>
+                                                        </Assign>
+                                                        <Assign DisplayName="ignore the file name " sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_44">
+                                                          <Assign.To>
+                                                            <OutArgument x:TypeArguments="x:String">[str_currentFileDestPath]</OutArgument>
+                                                          </Assign.To>
+                                                          <Assign.Value>
+                                                            <InArgument x:TypeArguments="x:String">[str_currentFileDestPath.Replace(System.Text.RegularExpressions.Regex.Match(str_currentFileDestPath,"\\+[^\\]*}*(?!.*\\)").ToString,"")]</InArgument>
+                                                          </Assign.Value>
+                                                        </Assign>
+                                                        <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_52" Text="[&quot;str_currentFilePath=&quot;+str_currentFileDestPath]" />
+                                                        <If Condition="[not Directory.Exists(str_currentFileDestPath)]" DisplayName="creates the sub folder in the archive folder if not exists" sap:VirtualizedContainerService.HintSize="484,367.333333333333" sap2010:WorkflowViewState.IdRef="If_32">
+                                                          <If.Then>
+                                                            <Sequence sap:VirtualizedContainerService.HintSize="376,172.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_107">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="CreateDirectory_5" Path="[str_currentFileDestPath]" />
+                                                            </Sequence>
+                                                          </If.Then>
+                                                          <If.Else>
+                                                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_108">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </Sequence>
+                                                          </If.Else>
+                                                        </If>
+                                                        <ui:MoveFile ContinueOnError="{x:Null}" Destination="[str_currentFileDestPath]" DisplayName="move file to archive" sap:VirtualizedContainerService.HintSize="484,162" sap2010:WorkflowViewState.IdRef="MoveFile_6" Overwrite="True" Path="[file.ToString]" />
+                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Trace" Message="[file.ToString+&quot;  MOVED TO ARCHIVE&quot;]" />
+                                                      </Sequence>
+                                                    </Sequence>
+                                                  </ActivityAction>
+                                                </ParallelForEach>
+                                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.666666666667,223.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                                  <ui:CommentOut.Body>
+                                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,144.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_111">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each file with the given extension" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_13" Values="[IEnu_currentExtensionFiles]">
+                                                        <ui:ForEach.Body>
+                                                          <ActivityAction x:TypeArguments="x:String">
+                                                            <ActivityAction.Argument>
+                                                              <DelegateInArgument x:TypeArguments="x:String" Name="file" />
+                                                            </ActivityAction.Argument>
+                                                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="568,1297.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="526,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_38" Text="[&quot;file= &quot;+file.ToString]" />
+                                                              <Sequence sap:VirtualizedContainerService.HintSize="526,1102.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_96">
+                                                                <Sequence.Variables>
+                                                                  <Variable x:TypeArguments="s:String[]" Name="strArr_FilePaths" />
+                                                                  <Variable x:TypeArguments="x:String" Name="str_currentFileDestPath" />
+                                                                  <Variable x:TypeArguments="x:String" Name="e" />
+                                                                </Sequence.Variables>
+                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                  </scg:Dictionary>
+                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                <Assign DisplayName="get archive sub folder file path" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_39">
+                                                                  <Assign.To>
+                                                                    <OutArgument x:TypeArguments="x:String">[str_currentFileDestPath]</OutArgument>
+                                                                  </Assign.To>
+                                                                  <Assign.Value>
+                                                                    <InArgument x:TypeArguments="x:String">[str_archiveFolderPath+file.ToString.Replace(currentRow("Directory").ToString,"")]</InArgument>
+                                                                  </Assign.Value>
+                                                                </Assign>
+                                                                <Assign DisplayName="ignore the file name " sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_40">
+                                                                  <Assign.To>
+                                                                    <OutArgument x:TypeArguments="x:String">[str_currentFileDestPath]</OutArgument>
+                                                                  </Assign.To>
+                                                                  <Assign.Value>
+                                                                    <InArgument x:TypeArguments="x:String">[str_currentFileDestPath.Replace(System.Text.RegularExpressions.Regex.Match(str_currentFileDestPath,"\\+[^\\]*}*(?!.*\\)").ToString,"")]</InArgument>
+                                                                  </Assign.Value>
+                                                                </Assign>
+                                                                <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_44" Text="[&quot;str_currentFilePath=&quot;+str_currentFileDestPath]" />
+                                                                <If Condition="[not Directory.Exists(str_currentFileDestPath)]" DisplayName="creates the sub folder in the archive folder if not exists" sap:VirtualizedContainerService.HintSize="484,367.333333333333" sap2010:WorkflowViewState.IdRef="If_31">
+                                                                  <If.Then>
+                                                                    <Sequence sap:VirtualizedContainerService.HintSize="376,172.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                        </scg:Dictionary>
+                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                      <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[str_currentFileDestPath]" />
+                                                                    </Sequence>
+                                                                  </If.Then>
+                                                                  <If.Else>
+                                                                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_94">
+                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                        </scg:Dictionary>
+                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                    </Sequence>
+                                                                  </If.Else>
+                                                                </If>
+                                                                <ui:MoveFile ContinueOnError="{x:Null}" Destination="[str_currentFileDestPath]" DisplayName="move file to archive" sap:VirtualizedContainerService.HintSize="484,162" sap2010:WorkflowViewState.IdRef="MoveFile_5" Overwrite="True" Path="[file.ToString]" />
+                                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Trace" Message="[file.ToString+&quot;  MOVED TO ARCHIVE&quot;]" />
+                                                              </Sequence>
+                                                            </Sequence>
+                                                          </ActivityAction>
+                                                        </ui:ForEach.Body>
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                      </ui:ForEach>
+                                                    </Sequence>
+                                                  </ui:CommentOut.Body>
+                                                </ui:CommentOut>
                                               </Sequence>
                                             </ActivityAction>
                                           </ParallelForEach>
@@ -499,11 +586,10 @@ Function (x)  Not x.Extension.Equals(".xaml") AndAlso
                                           <ActivityAction.Argument>
                                             <DelegateInArgument x:TypeArguments="x:String" Name="extension" />
                                           </ActivityAction.Argument>
-                                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,567.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_103">
+                                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="478.666666666667,830.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_103">
                                             <Sequence.Variables>
                                               <Variable x:TypeArguments="x:String" Default="0" Name="str_xDays" />
                                               <Variable x:TypeArguments="x:Int32" Default="5" Name="int_xDays" />
-                                              <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="IEnu_currentExtensionFiles" />
                                             </Sequence.Variables>
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -511,13 +597,13 @@ Function (x)  Not x.Extension.Equals(".xaml") AndAlso
                                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_46" Text="[&quot;extension=&quot;+extension.ToString]" />
-                                            <Assign sap2010:Annotation.AnnotationText="get files using query filtering the result according to the&#xA;Delete Files Older Than X Days' AND&#xA;Folder Max Files Capacity' columns&#xA;AND&#xA;get only files with permitted extensions " DisplayName="get the files with/without sub folders" sap:VirtualizedContainerService.HintSize="262,177.333333333333" sap2010:WorkflowViewState.IdRef="Assign_42">
+                                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_46" Text="[&quot;extension=&quot;+extension.ToString]" />
+                                            <Assign sap2010:Annotation.AnnotationText="get files using query filtering the result according to the&#xA;Delete Files Older Than X Days' AND&#xA;Folder Max Files Capacity' columns&#xA;AND&#xA;get only files with permitted extensions " DisplayName="get the files with/without sub folders" sap:VirtualizedContainerService.HintSize="436.666666666667,177.333333333333" sap2010:WorkflowViewState.IdRef="Assign_42">
                                               <Assign.To>
                                                 <OutArgument x:TypeArguments="scg:IEnumerable(x:String)">[IEnu_currentExtensionFiles]</OutArgument>
                                               </Assign.To>
                                               <Assign.Value>
-                                                <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[New DirectoryInfo(currentRow("Directory").ToString).GetFiles("*."+extension.ToString,If(CurrentRow("Is Include Sub Folder?").ToString.Equals("True"),SearchOption.AllDirectories,SearchOption.TopDirectoryOnly)).Where(
+                                                <InArgument x:TypeArguments="scg:IEnumerable(x:String)" xml:space="preserve">[New DirectoryInfo(currentRow("Directory").ToString).GetFiles("*."+extension.ToString,If(CurrentRow("Is Include Sub Folder?").ToString.Equals("True"),SearchOption.AllDirectories,SearchOption.TopDirectoryOnly)).Where(
 Function (x)  Not x.Extension.Equals(".xaml") AndAlso 
 	Not x.Extension.Equals(".json") AndAlso 
 	Not x.Extension.Equals(".metadata") AndAlso 
@@ -531,44 +617,90 @@ Function (x)  Not x.Extension.Equals(".xaml") AndAlso
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                             </Assign>
-                                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="262,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_47" Text="[&quot;count=&quot;+IEnu_currentExtensionFiles.Count.ToString]" />
-                                            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each file with the given extension" sap:VirtualizedContainerService.HintSize="262,52.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_14" Values="[IEnu_currentExtensionFiles]">
-                                              <ui:ForEach.Body>
-                                                <ActivityAction x:TypeArguments="x:String">
-                                                  <ActivityAction.Argument>
-                                                    <DelegateInArgument x:TypeArguments="x:String" Name="file" />
-                                                  </ActivityAction.Argument>
-                                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="418,502" sap2010:WorkflowViewState.IdRef="Sequence_102">
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
-                                                    <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="376,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_48" Text="[&quot;file= &quot;+file.ToString]" />
-                                                    <Sequence sap:VirtualizedContainerService.HintSize="376,307.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_101">
-                                                      <Sequence.Variables>
-                                                        <Variable x:TypeArguments="s:String[]" Name="strArr_FilePaths" />
-                                                        <Variable x:TypeArguments="x:String" Name="str_currentFileDestPath" />
-                                                        <Variable x:TypeArguments="x:String" Name="e" />
-                                                      </Sequence.Variables>
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                      <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="Delete_8" Path="[file.ToString]" />
-                                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Trace" Message="[file.ToString+&quot;  WAS DELETED&quot;]" />
-                                                    </Sequence>
-                                                  </Sequence>
-                                                </ActivityAction>
-                                              </ui:ForEach.Body>
+                                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436.666666666667,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_47" Text="[&quot;count=&quot;+IEnu_currentExtensionFiles.Count.ToString]" />
+                                            <ParallelForEach x:TypeArguments="x:String" DisplayName="Parallel For each file with the given extension" sap:VirtualizedContainerService.HintSize="436.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_7" Values="[IEnu_currentExtensionFiles]">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                            </ui:ForEach>
+                                              <ActivityAction x:TypeArguments="x:String">
+                                                <ActivityAction.Argument>
+                                                  <DelegateInArgument x:TypeArguments="x:String" Name="file" />
+                                                </ActivityAction.Argument>
+                                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="418,502" sap2010:WorkflowViewState.IdRef="Sequence_105">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="376,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_50" Text="[&quot;file= &quot;+file.ToString]" />
+                                                  <Sequence sap:VirtualizedContainerService.HintSize="376,307.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_104">
+                                                    <Sequence.Variables>
+                                                      <Variable x:TypeArguments="s:String[]" Name="strArr_FilePaths" />
+                                                      <Variable x:TypeArguments="x:String" Name="str_currentFileDestPath" />
+                                                      <Variable x:TypeArguments="x:String" Name="e" />
+                                                    </Sequence.Variables>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="Delete_9" Path="[file.ToString]" />
+                                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Trace" Message="[file.ToString+&quot;  WAS DELETED&quot;]" />
+                                                  </Sequence>
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </ParallelForEach>
+                                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436.666666666667,223.333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                              <ui:CommentOut.Body>
+                                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,144.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_106">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each file with the given extension" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_14" Values="[IEnu_currentExtensionFiles]">
+                                                    <ui:ForEach.Body>
+                                                      <ActivityAction x:TypeArguments="x:String">
+                                                        <ActivityAction.Argument>
+                                                          <DelegateInArgument x:TypeArguments="x:String" Name="file" />
+                                                        </ActivityAction.Argument>
+                                                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="418,502" sap2010:WorkflowViewState.IdRef="Sequence_102">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <WriteLine DisplayName="testttt" sap:VirtualizedContainerService.HintSize="376,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_48" Text="[&quot;file= &quot;+file.ToString]" />
+                                                          <Sequence sap:VirtualizedContainerService.HintSize="376,307.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_101">
+                                                            <Sequence.Variables>
+                                                              <Variable x:TypeArguments="s:String[]" Name="strArr_FilePaths" />
+                                                              <Variable x:TypeArguments="x:String" Name="str_currentFileDestPath" />
+                                                              <Variable x:TypeArguments="x:String" Name="e" />
+                                                            </Sequence.Variables>
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="Delete_8" Path="[file.ToString]" />
+                                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Trace" Message="[file.ToString+&quot;  WAS DELETED&quot;]" />
+                                                          </Sequence>
+                                                        </Sequence>
+                                                      </ActivityAction>
+                                                    </ui:ForEach.Body>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </ui:ForEach>
+                                                </Sequence>
+                                              </ui:CommentOut.Body>
+                                            </ui:CommentOut>
                                           </Sequence>
                                         </ActivityAction>
                                       </ParallelForEach>
@@ -597,9 +729,21 @@ Function (x)  Not x.Extension.Equals(".xaml") AndAlso
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">940,114</av:Point>
                               <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">1040,166.666666666667 1040,216.666666666667</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:RaiseAlert TimeoutMS="{x:Null}" DisplayName="Raise Alert - path was not found" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="RaiseAlert_1" Notification="[&quot;File directory at row number &quot;+dt_excelData.Rows.IndexOf(currentRow).ToString +&quot; either not exist or contain project folder&quot;]" Severity="Info" />
+                          <FlowStep.Next>
+                            <FlowStep x:Name="__ReferenceID9">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">925.333333333333,216.666666666667</av:Point>
+                                  <av:Size x:Key="ShapeSize">229.333333333333,62.6666666666667</av:Size>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="229.333333333333,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_49" Text="path not found!!!" />
+                            </FlowStep>
+                          </FlowStep.Next>
                         </FlowStep>
                       </FlowDecision.False>
                     </FlowDecision>
@@ -612,6 +756,7 @@ Function (x)  Not x.Extension.Equals(".xaml") AndAlso
                     <x:Reference>__ReferenceID6</x:Reference>
                     <x:Reference>__ReferenceID7</x:Reference>
                     <x:Reference>__ReferenceID8</x:Reference>
+                    <x:Reference>__ReferenceID9</x:Reference>
                   </Flowchart>
                 </Sequence>
               </ActivityAction>
@@ -625,6 +770,6 @@ Function (x)  Not x.Extension.Equals(".xaml") AndAlso
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID10</x:Reference>
+    <x:Reference>__ReferenceID11</x:Reference>
   </Flowchart>
 </Activity>
